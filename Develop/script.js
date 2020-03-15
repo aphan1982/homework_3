@@ -1,35 +1,91 @@
 // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-
-// if (confirm("You will be asked a series of questions to determine what kind of password you would like to create, okay?")) {
-
-// }
-
-var lengthSelection = prompt("Your password must be at least 8 characters long and no longer than 128. How many characters would you like your password to have?", "");
-
-console.log(typeof(lengthSelection));
-var lengthSelectionConv = parseInt(lengthSelection);
-console.log(typeof(lengthSelectionConv));
-
-if (lengthSelectionConv < 8 || lengthSelectionConv > 128 || lengthSelectionConv != Number) {
-  // lengthSelection = Number(prompt("Your selection must be a number between 8 and 128. Please re-enter."));
-  // console.log(lengthSelection);
-  alert("shut up");
-} else {
-  alert("bye");
-}
-// while  {
-  
-// }
+var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
+function writePassword() {
+  
+  var password = generatePassword();
+  function generatePassword() {
+    
+    // To establish acceptable parameters for generatePassword():
+    var lengthSelect;
+    var lengthSelectIsValid = false;
+    var majCharArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var majSelect;
+    var minCharArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var minSelect;
+    var numCharArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var numSelect;
+    var possibleChars = [];
+    var specialCharArr = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "]", "}", "|", "\\", ";", ":", "'", "\"", "<", ",", ".", ">", "/", "?"];
+    var specialCharSelect;
+    
+    // First user prompt:
+    lengthSelect = prompt("Your password must be at least 8 characters long and no longer than 128. Using the numeric keypad, how long would you like your password to be?");
+    // To convert user input from string to useable number:
+    lengthSelect = parseInt(lengthSelect);
+    console.log(lengthSelect);
+    
+    // To determine if the user input meets length/input criteria:
+    if (isNaN(lengthSelect)) {
+      alert("That is not a number! Please try again.");
+    } else if (lengthSelect < 8) {
+      alert("Your password is too short. Please select a number between 8 and 128.");
+    } else if (lengthSelect > 128) {
+      alert ("Your password is too long. Please select a number between 8 and 128.");
+    } else {
+      lengthSelectIsValid = true;
+      // To confirm lowercase:
+      var minSelect = confirm("Would you like your password to contain lowercase letters?");
+      console.log(minSelect);
+      // To confirm uppercase:
+      var majSelect = confirm("Would you like your password to contain uppercase letters?");
+      console.log(majSelect);
+      // To confirm numbers:
+      var numSelect = confirm("Would you like your password to contain numbers?");
+      console.log(numSelect);
+      // To confirm special characters:
+      var specialCharSelect = confirm("\"Special characters\" are things such as \"&\", \"$\", \"!\", or \"@.\" Would you like your password to contain those?");
+      console.log(specialCharSelect);
+    }
+    
+    // Creates an ever-expanding array of possible characters, based on user preferences, from which password will be drawn:
+    if (minSelect) {
+      possibleChars = possibleChars.concat(minCharArr);
+      console.log(possibleChars);
+    }
+    if (majSelect) {
+        possibleChars = possibleChars.concat(majCharArr);
+        console.log(possibleChars);
+    }
+    if (numSelect) {
+      possibleChars = possibleChars.concat(numCharArr);
+      console.log(possibleChars);
+    }
+    if (specialCharSelect) {
+      possibleChars = possibleChars.concat(specialCharArr);
+      console.log(possibleChars);
+    }
+    
+    // If user selection fails to conform to acceptable password criteria, this will not run:
+    if (lengthSelectIsValid) {
+    var numArray = new Array(lengthSelect);
+    console.log(numArray);
+    }
+    // Runs incrementally down each character position and randomly assigns value from the total array of possible characters:
+    var i;
+    for (i = 0; i < numArray.length; i++) {
+      numArray[i] = possibleChars[Math.floor(Math.random() * possibleChars.length)];
+      console.log(numArray);
+    }
+    // Converts resultant array to string that can be passed back to DOM:
+    password = numArray.join('');
+    console.log(password);
+    console.log(typeof(password));
+    passwordText.value = password;
+  }
+}
 
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);

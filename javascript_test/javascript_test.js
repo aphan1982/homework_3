@@ -37,19 +37,19 @@ if (isNaN(lengthSelect)) {
   console.log(specialCharSelect);
 }
 
-if (minSelect === true) {
+if (minSelect) {
   possibleChars = possibleChars.concat(minCharArr);
   console.log(possibleChars);
 }
-if (majSelect === true) {
+if (majSelect) {
     possibleChars = possibleChars.concat(majCharArr);
     console.log(possibleChars);
 }
-if (numSelect === true) {
+if (numSelect) {
   possibleChars = possibleChars.concat(numCharArr);
   console.log(possibleChars);
 }
-if (specialCharSelect === true) {
+if (specialCharSelect) {
   possibleChars = possibleChars.concat(specialCharArr);
   console.log(possibleChars);
 }
