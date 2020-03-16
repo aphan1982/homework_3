@@ -4,21 +4,27 @@
   This applet enables a user to randomly generate a secure, unique, and complex password. The interface and experience should be simple, clean, and optimized for multiple viewports.
 
   The styling and general format has not changed from the original "Develop" homework assignment I received. When a visitor clicks the red "Generate Password" button,
+
   ![a relative link](./Assets/images/generate_btn_arrow.png "red \"Generate Password\" button")
 
   a series of prompt widows will appear, first verifying that the user selects an appropriate number value for the final password length (a range from 8-128 characters), then asking what characters should be allowable in the final password--lowercase,
+
   ![a relative link](./Assets/images/lowercase_select.png "lowercase example")
   
   uppercase,
+
   ![a relative link](./Assets/images/uppercase_select.png "uppercase example")
   
   numeric,
+
   ![a relative link](./Assets/images/numeric_select.png "numeric example") 
   
   and special character
+
   ![a relative link](./Assets/images/special_char_select.png "special character example")
   
   values. Once completed, the applet will display a randomly generated password meeting the user's criteria.
+  
   ![a relative link](./Assets/images/final_password.png "final password example")
 
 <!-- //NOTES// -->
