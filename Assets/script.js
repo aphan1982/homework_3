@@ -25,7 +25,6 @@ function writePassword() {
     lengthSelect = prompt("Your password must be at least 8 characters long and no longer than 128. Using the numeric keypad, how long would you like your password to be?");
     // To convert user input from string to useable number:
     lengthSelect = parseInt(lengthSelect);
-    console.log(lengthSelect);
     
     // To determine if the user input meets length/input criteria:
     if (isNaN(lengthSelect)) {
@@ -38,51 +37,39 @@ function writePassword() {
       lengthSelectIsValid = true;
       // To confirm lowercase:
       var minSelect = confirm("Would you like your password to contain lowercase letters?");
-      console.log(minSelect);
       // To confirm uppercase:
       var majSelect = confirm("Would you like your password to contain uppercase letters?");
-      console.log(majSelect);
       // To confirm numbers:
       var numSelect = confirm("Would you like your password to contain numbers?");
-      console.log(numSelect);
       // To confirm special characters:
       var specialCharSelect = confirm("\"Special characters\" are things such as \"&\", \"$\", \"!\", or \"@.\" Would you like your password to contain those?");
-      console.log(specialCharSelect);
     }
     
     // Creates an ever-expanding array of possible characters, based on user preferences, from which password will be drawn:
     if (minSelect) {
       possibleChars = possibleChars.concat(minCharArr);
-      console.log(possibleChars);
     }
     if (majSelect) {
         possibleChars = possibleChars.concat(majCharArr);
-        console.log(possibleChars);
     }
     if (numSelect) {
       possibleChars = possibleChars.concat(numCharArr);
-      console.log(possibleChars);
     }
     if (specialCharSelect) {
       possibleChars = possibleChars.concat(specialCharArr);
-      console.log(possibleChars);
     }
     
     // If user selection fails to conform to acceptable password criteria, this will not run:
     if (lengthSelectIsValid) {
     var numArray = new Array(lengthSelect);
-    console.log(numArray);
     }
     // Runs incrementally down each character position and randomly assigns value from the total array of possible characters:
     var i;
     for (i = 0; i < numArray.length; i++) {
       numArray[i] = possibleChars[Math.floor(Math.random() * possibleChars.length)];
-      console.log(numArray);
     }
     // Converts resultant array to string that can be passed back to DOM:
     password = numArray.join('');
-    console.log(password);
-    console.log(typeof(password));
     passwordText.value = password;
   }
 }
